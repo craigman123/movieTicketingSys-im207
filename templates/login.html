@@ -8,39 +8,77 @@
 
 {% block body %}
 
-<body></body>
+  <div class="bg bg1"></div>
+  <div class="bg bg2"></div>
+  <div class="bg bg3"></div>
+  <div class="bg bg4"></div>
+  <div class="bg bg5"></div>
+
 <nav class="logo-container">
     <img class="logo-img" src="{{ url_for('static', filename='assets/logo-removebg-preview.png') }}" alt="LUMA Logo">
 </nav>
 
 <section class="login-section">
-    <div class="login-container">
-        <h2>WELCOME BACK</h2>
+    <div class="register-container" style= "display: none;">
+        <form action="/register" method="post">
+            <h2>HELLO NEWCOMER</h2>
 
-        <div class="input-box">
-            <input type="text" placeholder="Username">
+            <div class="input-box">
+                <input type="text" name="username" placeholder="Username">
+            </div>
+
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Password">
+            </div>
+
+            <div class="forgot">Forgot Password?</div>
+
+            <button class="btn">REGSITER</button>
+
+            <div class="create-account">
+                Don't have an account?<br>
+                <button class="create-btn">Create Account</button>
+            </div>
+
+            <div class="social-register">
+                <img class="img1" src="{{ url_for('static', filename='assets/google-removebg-preview.png') }}">
+                <img class="img2" src="{{ url_for('static', filename='assets/fb-removebg-preview.png') }}">
+                <img class="img3" src="{{ url_for('static', filename='assets/mail-removebg-preview.png') }}">
+                <img class="img4" src="{{ url_for('static', filename='assets/insta-removebg-preview.png') }}">
+            </div>
+            </form>
         </div>
 
-        <div class="input-box">
-            <input type="password" placeholder="Password">
+        <div class="login-container" style= "display: block;">
+            <form action="/login" method="post">
+                
+                <h2>WELCOME BACK</h2>
+
+                <div class="input-box">
+                    <input type="text" name="username" placeholder="Username">
+                </div>
+
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+
+                <div class="forgot">Forgot Password?</div>
+
+                <button class="btn">LOG IN</button>
+
+                <div class="create-account">
+                    Don't have an account?<br>
+                    <button class="create-btn">Create Account</button>
+                </div>
+
+                <div class="social-login">
+                    <img class="img1" src="{{ url_for('static', filename='assets/google-removebg-preview.png') }}">
+                    <img class="img2" src="{{ url_for('static', filename='assets/fb-removebg-preview.png') }}">
+                    <img class="img3" src="{{ url_for('static', filename='assets/mail-removebg-preview.png') }}">
+                    <img class="img4" src="{{ url_for('static', filename='assets/insta-removebg-preview.png') }}">
+                </div>
+            </form>
         </div>
-
-        <div class="forgot">Forgot Password?</div>
-
-        <button class="btn">LOG IN</button>
-
-        <div class="create-account">
-            Don't have an account?<br>
-            <button class="create-btn">Create Account</button>
-        </div>
-
-        <div class="social-login">
-            <img class="img1" src="{{ url_for('static', filename='assets/google-removebg-preview.png') }}">
-            <img class="img2" src="{{ url_for('static', filename='assets/fb-removebg-preview.png') }}">
-            <img class="img3" src="{{ url_for('static', filename='assets/mail-removebg-preview.png') }}">
-            <img class="img4" src="{{ url_for('static', filename='assets/insta-removebg-preview.png') }}">
-        </div>
-
     </div>
 </section>
 
