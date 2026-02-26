@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>LUMA Admin_Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_dashboard.css') }}">
+    <script src="{{ url_for('static', filename='js/admin_dashboard.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2>WELCOME<br>ADMIN, NAME!</h2>
+
+        <button class="menu-btn active">ADD EVENT</button>
+        <button class="menu-btn">USERS</button>
+        <button class="menu-btn">SALES</button>
+        <button class="menu-btn">STATISTICS</button>
+        <button class="menu-btn">EVENTS</button>
+        <button class="menu-btn">LOGS</button>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <div class="top-section">
+
+            <!-- LEFT UPLOAD SECTION -->
+            <div class="upload-section">
+
+                <div class="upload-card">
+                    <div class="image-placeholder">MOVIE IMAGE</div>
+                </div>
+
+                <div class="upload-card">
+                    <div class="image-placeholder">TRAILER VIDEO</div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT DETAILS SECTION -->
+            <div class="details-section">
+
+                <div class="movie-info">
+                    <p>GENRE:</p>
+                    <p>DURATION:</p>
+                    <p>AGE RATING:</p>
+                    <p>LANGUAGE & SUBTITLES:</p>
+                    <p>MOVIE SCHEDULE:</p>
+                    <p>VENUE:</p>
+                </div>
+
+                <div class="availability">
+                    <h4>AVAILABILITY</h4>
+                    <button class="regular">REGULAR</button>
+                    <button class="premium">PREMIUM</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MOVIE NAME & DATE -->
+        <div class="mid-section">
+            <input type="text" placeholder="MOVIE NAME">
+            <input type="date">
+        </div>
+
+        <!-- DESCRIPTION -->
+        <textarea placeholder="MOVIE DESCRIPTION..."></textarea>
+
+        <!-- BOTTOM NAV -->
+        <div class="bottom-nav">
+            <button>&lt;</button>
+            <button>&gt;</button>
+        </div>
+
+    </main>
+</div>
+
+{% endblock %}
