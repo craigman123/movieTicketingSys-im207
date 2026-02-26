@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>LUMA - About</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    <script src="{{ url_for('static', filename='about.js') }}?v={{ now }}"></script>
+{% endblock %}
+
+{% block body %}
+
+<div class="navbar">
+    <div class="logo">LUMA</div>
+
+    <div class="nav-links">
+        <a href="#">HOME</a>
+        <a href="#">ORDER</a>
+        <a href="#" class="active">ABOUT</a>
+        <a href="#">LIBRARIES</a>
+        <a href="#">LATEST</a>
+        <a href="#">MOST RATED</a>
+        <a href="#">MOST WATCHED</a>
+        <a href="settings.html">SETTINGS</a>
+    </div>
+
+    <div class="profile">C</div>
+</div>
+
+<section class="about">
+    <h1>ABOUT</h1>
+
+    <div class="cards">
+
+        <!-- CARD 1 -->
+        <!-- CARD 1 -->
+<div class="card" onclick="expandCard(this)" data-alt-img="assets/efficiency-big.png">
+    <div class="card-text">
+        <p> This Movie Ticketing System is a web-based platform designed to allow users to purchase movie tickets in advance using virtual tickets. Instead of seat selection, the system focuses on ticket availability management to prevent tickets from going out of stock during peak times. </p>
+        <h3>EFFICIENT FRIENDLY</h3>
+    </div>
+    <div class="card-img">
+        <img src="assets/efficiency.png">
+    </div>
+</div>
+
+<!-- CARD 2 -->
+<div class="card" onclick="expandCard(this)" data-alt-img="assets/ticksec-big.png">
+    <div class="card-text">
+        <p> Tickets are sold virtually USING QR CODES AND A HEXA CODE AS A UNIQUE IDENTIFICATION OF THAT TICKET and registered in advance to ensure availability.  By tracking ticket purchases in real time, the system helps prevent tickets from going out of stock during peak movie schedules. </p>
+        <h3>TICKET UNIQUE SECURITY</h3>
+    </div>
+    <div class="card-img">
+        <img src="assets/ticksec.png">
+    </div>
+</div>
+
+<!-- CARD 3 -->
+<div class="card" onclick="expandCard(this)" data-alt-img="assets/redhas-big.png">
+    <div class="card-text">
+        <p> The system provides a fast, reliable, and user-friendly way to secure movie tickets early.  It reduces missed screenings, improves demand management, and offers a smoother movie-going experience. </p>
+        <h3>REDUCE HASSLE</h3>
+    </div>
+    <div class="card-img">
+        <img src="assets/redhas.png">
+    </div>
+</div>
+
+    </div>
+</section>
+
+{% endblock %}

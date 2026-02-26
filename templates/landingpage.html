@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>LUMA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landingpage.css') }}">
+    <script src="{{ url_for('static', filename='landingpage.js') }}?v={{ now }}"></script>
+{% endblock %}
+
+{% block body %}
+
+<header class="navbar">
+    <div class="contain">
+        <img class="logo-img" src="{{ url_for('static', filename='assets/logo-removebg-preview.png') }}" alt="LUMA Logo">
+        <div class="logo">LUMA</div> 
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#home">Top</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <a href="{{ url_for('gotologin') }}" class="btn-primary">Book Now</a>
+</header>
+
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>Reserve Your Movie Experience</h1>
+        <p>Discover movies, explore, adventure,  and pay securely — all in seconds.</p>
+        <a href="{{ url_for('gotologin') }}" class="btn-primary large">Get Tickets</a>
+    </div>
+</section>
+
+<section id="features" class="features">
+    <h2>Why Choose LUMA?</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>🎥 Browse Movies</h3>
+            <p>Explore latest releases and upcoming blockbusters in one place.</p>
+        </div>
+        <div class="feature-card">
+            <h3>💺 Real-Time Seats</h3>
+            <p>Select your preferred seats with live availability updates.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🔒 Secure Payments</h3>
+            <p>Fast and encrypted checkout with multiple payment options.</p>
+        </div>
+        <div class="feature-card">
+            <h3>📩 Instant E-Tickets</h3>
+            <p>Receive digital tickets instantly via email or mobile.</p>
+        </div>
+    </div>
+</section>
+
+<section id="how" class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+        <div class="step1">
+            <h3>Select</h3>
+            <p>Choose your movie, showtime, and seats with ease.</p>
+            <img src="{{ url_for('static', filename='assets/select.png') }}" alt="Select Movie" class="step-image">
+        </div>
+        <div class="step2">
+            <h3>Order</h3>
+            <p>Review your selection and proceed to checkout securely.</p>
+            <img src="{{ url_for('static', filename='assets/order.png') }}" alt="Order Tickets" class="step-image">
+        </div>
+        <div class="step3">
+            <h3>Pay</h3>
+            <p>Complete your purchase with our fast and secure payment system.</p>
+            <img src="{{ url_for('static', filename='assets/pay.png') }}" alt="Pay for Tickets" class="step-image">
+        </div>
+        <div class="step4">
+            <h3>Enjoy</h3>
+            <p>Receive your e-tickets and get ready for an unforgettable movie night!</p>
+            <img src="{{ url_for('static', filename='assets/pop.png') }}" alt="Enjoy Movie" class="step-image4">
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Ready for Your Next Movie Night?</h2>
+    <a href="{{ url_for('gotologin') }}" class="btn-primary large">Book Tickets Now</a>
+    <p>Experience the magic of movies with LUMA. Fast, easy, 
+        and secure ticketing at your fingertips, emersive movie experience, 
+        and tons of amazing movies to adventure and discover.</p>
+</section>
+
+<footer id="contact">
+  <div class="footer-content">
+    <p class="copyright">© 2026 LUMA. All rights reserved.</p>
+
+    <div class="contact-info">
+      <p>Email: <a href="mailto:info@luma.com">info@luma.com</a></p>
+      <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+      <p>Address: 123 Luma Street, City, Country</p>
+    </div>
+
+    <div class="social-links">
+      <a href="#" target="_blank">Facebook</a> |
+      <a href="#" target="_blank">Twitter</a> |
+      <a href="#" target="_blank">Instagram</a>
+    </div>
+
+    <div class="sponsors">
+      <div class="sponsor-group">
+        <h3>Mall Sponsors</h3>
+        <ul>
+          <li>SM Mall</li>
+          <li>Robinsons</li>
+          <li>Ayala Malls</li>
+        </ul>
+      </div>
+
+      <div class="sponsor-group">
+        <h3>Movie Makers</h3>
+        <ul>
+          <li>Warner Bros.</li>
+          <li>Universal Pictures</li>
+          <li>Disney Studios</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}

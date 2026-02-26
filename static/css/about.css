@@ -1,0 +1,197 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:linear-gradient(to bottom,#0f0f0f,#1a1a1a);
+    color:white;
+}
+
+/* ================= HEADER ================= */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+    background:#111;
+}
+
+.logo{
+    font-size:32px;
+    font-weight:bold;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.nav-links a.active,
+.nav-links a:hover{
+    color:#00ff88;
+}
+
+.profile{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#2ecc71;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    padding:60px 80px;
+    text-align:center;
+}
+
+.about h1{
+    margin-bottom:40px;
+    letter-spacing:2px;
+}
+
+.cards{
+    display:flex;
+    gap:30px;
+    justify-content:center;
+    align-items:center;
+    transition:0.5s ease;
+}
+
+/* ================= CARD ================= */
+
+.card{
+    position:relative;
+    width:320px;
+    height:320px;
+    background:#2a2a2a;
+    border-radius:12px;
+    overflow:hidden;
+    cursor:pointer;
+    display:flex;
+    transition:0.7s cubic-bezier(.77,0,.18,1);
+}
+
+/* TEXT SIDE */
+.card-text{
+    padding:30px;
+    width:100%;
+    transition:0.5s ease;
+    position:relative;
+    z-index:2;
+}
+
+.card p{
+    font-size:13px;
+    line-height:1.6;
+    color:#ccc;
+    margin-bottom:20px;
+    transition:0.4s ease;
+}
+
+/* CENTERED TITLE BAR */
+.card h3{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#3a3a3a;
+    padding:15px 0;
+    text-align:center;   /* 🔥 FIX CENTER */
+    font-size:14px;
+    letter-spacing:1px;
+    z-index:3;
+}
+
+/* IMAGE LAYER (for hover preview) */
+.card-img{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:0.5s ease;
+}
+
+.card-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform:scale(1);
+    transition:0.6s ease;
+}
+
+/* Dark overlay */
+.card-img::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.65);
+}
+
+/* ===== HOVER EFFECT (only if NOT expanded) ===== */
+.card:not(.expanded):hover .card-img{
+    opacity:1;
+}
+
+.card:not(.expanded):hover .card-img img{
+    transform:scale(1.1);
+}
+
+.card:not(.expanded):hover p{
+    opacity:0;
+    transform:translateY(10px);
+}
+
+/* ===== EXPANDED ===== */
+
+.card.expanded{
+    width:900px;
+    background:#1f1f1f;
+}
+
+/* Split layout when expanded */
+.card.expanded .card-text{
+    width:50%;
+}
+
+.card.expanded .card-img{
+    position:relative;
+    width:50%;
+    opacity:1;
+}
+
+.card.expanded .card-img img{
+    transform:none;
+    opacity:1;
+}
+
+/* Hide other cards */
+.card.hide{
+    opacity:0;
+    transform:scale(0.8);
+    pointer-events:none;
+}
+
+/* Smooth fade for description */
+.card.expanded p{
+    animation:fadeInText 0.6s ease forwards;
+}
+
+@keyframes fadeInText{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}

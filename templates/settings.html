@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Luma Settings UI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='settings.css') }}?v={{ now }}">
+    <script src="{{ url_for('static', filename='settings.js') }}?v={{ now }}"></script>
+{% endblock %}
+
+{% block body %}
+
+<header>
+    <div class="logo">LUMA</div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Order</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Libraries</a></li>
+            <li><a href="#">Latest</a></li>
+            <li><a href="#">Most Rated</a></li>
+            <li><a href="#">Most Watched</a></li>
+            <li><a href="#" class="active-link">Settings</a></li>
+        </ul>
+    </nav>
+    <div class="profile-icon">C</div>
+</header>
+
+<div class="settings-container">
+    <h2>Settings</h2>
+
+    <div class="settings-row">
+        <span class="label">Light Mode / Dark Mode</span>
+        <div class="toggle-btn"></div>
+    </div>
+
+    <div class="settings-row">
+        <span class="label">User Privacy & Security</span>
+        <span class="icon">🛡️</span>
+    </div>
+
+    <div class="settings-row">
+        <span class="label">Help</span>
+        <span class="icon">❓</span>
+    </div>
+
+    <div class="settings-row">
+        <span class="label">About Us</span>
+        <span class="icon">📖</span>
+    </div>
+
+    <div class="settings-row">
+        <span class="label">Rate</span>
+        <span class="star">★</span>
+    </div>
+</div>
+
+{% endblock %}
