@@ -3,7 +3,7 @@
 {% block head %}
     <title>LUMA Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-    <script src="{{ url_for('static', filename='login.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
 {% endblock %}
 
 {% block body %}
@@ -19,25 +19,30 @@
 </nav>
 
 <section class="login-section">
-    <div class="register-container" style= "display: none;">
+    <div class="register-container hidden">
         <form action="/register" method="post">
             <h2>HELLO NEWCOMER</h2>
 
+            <div class="input-box name">
+                <input type="text" name="first" placeholder="Firstname">
+                <input type="text" name="last" placeholder="Lastname">
+            </div>
+
             <div class="input-box">
-                <input type="text" name="username" placeholder="Username">
+                <input type="email" name="email" placeholder="Email">
             </div>
 
             <div class="input-box">
                 <input type="password" name="password" placeholder="Password">
             </div>
 
-            <div class="forgot">Forgot Password?</div>
-
-            <button class="btn">REGSITER</button>
+            <button class="btn">REGISTER</button>
 
             <div class="create-account">
-                Don't have an account?<br>
-                <button class="create-btn">Create Account</button>
+                Already have an account?<br>
+                <button type="button" class="create-btn" id="showLogin">
+                    Back to Login
+                </button>
             </div>
 
             <div class="social-register">
@@ -49,13 +54,17 @@
             </form>
         </div>
 
-        <div class="login-container" style= "display: block;">
+        <div class="login-container">
             <form action="/login" method="post">
                 
                 <h2>WELCOME BACK</h2>
 
                 <div class="input-box">
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="text" name="username" placeholder="Name">
+                </div>
+
+                <div class="input-box">
+                    <input type="email" name="email" placeholder="Email">
                 </div>
 
                 <div class="input-box">
@@ -68,7 +77,9 @@
 
                 <div class="create-account">
                     Don't have an account?<br>
-                    <button class="create-btn">Create Account</button>
+                    <button type="button" class="create-btn" id="showRegister">
+                        Create Account
+                    </button>
                 </div>
 
                 <div class="social-login">
@@ -79,7 +90,6 @@
                 </div>
             </form>
         </div>
-    </div>
 </section>
 
 </body>

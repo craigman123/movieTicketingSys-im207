@@ -19,6 +19,7 @@
             <li><a href="#features">Features</a></li>
             <li><a href="#how">How It Works</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="#ticket">Tickets</a></li>
         </ul>
     </nav>
     <a href="{{ url_for('gotologin') }}" class="btn-primary">Book Now</a>
@@ -82,11 +83,104 @@
 
 <section class="cta">
     <h2>Ready for Your Next Movie Night?</h2>
-    <a href="{{ url_for('gotologin') }}" class="btn-primary large">Book Tickets Now</a>
-    <p>Experience the magic of movies with LUMA. Fast, easy, 
+    <a href="{{ url_for('gotologin') }}" class="btn-primary large">Reserve Tickets Now</a>
+    <p>Experience the magic movies with LUMA. Fast, easy, 
         and secure ticketing at your fingertips, emersive movie experience, 
         and tons of amazing movies to adventure and discover.</p>
 </section>
+
+<section class="gallery">
+        <div class="wrapper">
+            <div class="inner" style="--quantity: 10;">
+                <div class="card" style="--index: 0;--color-card: 0,0,0;">
+                <div class="img">
+                        <img src="{{ url_for('static', filename='assets/dune.jpg') }}" alt="LUMA Logo" class="logo-img"></img>
+                    </div>
+                </div>
+                <div class="card" style="--index: 1;--color-card: 0,0,0;">
+                <div class="img">
+                        <img src="{{ url_for('static', filename='assets/calyface.webp') }}" alt="LUMA Logo" class="logo-img"></img>
+                    </div>
+                </div>
+                <div class="card" style="--index: 2;--color-card: 0,0,0;">
+                <div class="img">
+                        <img src="{{ url_for('static', filename='assets/moanalive.webp') }}" alt="LUMA Logo" class="logo-img"></img>
+                    </div>
+                </div>
+                <div class="card" style="--index: 3;--color-card: 0,0,0;">
+                <div class="img">
+                        <img src="{{ url_for('static', filename='assets/minion3.webp') }}" alt="LUMA Logo" class="logo-img"></img>
+                    </div>
+                </div>
+                <div class="card" style="--index: 4;--color-card: 0,0,0;">
+                <div class="img">
+                        <img src="{{ url_for('static', filename='assets/story5.jpg') }}" alt="LUMA Logo" class="logo-img"></img>
+                    </div>
+                </div>
+                <div class="card" style="--index: 5;--color-card: 0,0,0;">
+                    <div class="img">
+                        <img src="{{ url_for('static', filename='assets/oddesy.webp') }}" alt="LUMA Logo" class="logo-img"></img>
+                    </div>
+                </div>
+                <div class="card" style="--index: 6;--color-card: 0,0,0;">
+                    <div class="img">
+                        <img src="{{ url_for('static', filename='assets/spoderman.jpg') }}" alt="LUMA Logo" class="logo-img"></img>
+                    </div>
+                    </div>
+                <div class="card" style="--index: 7;--color-card: 0,0,0;">
+                    <div class="img">
+                        <img src="{{ url_for('static', filename='assets/jackrecah.jpg') }}" alt="LUMA Logo" class="logo-img"></img>
+                    </div>
+                </div>
+                <div class="card" style="--index: 8;--color-card: 0,0,0;">
+                    <div class="img">
+                        <img src="{{ url_for('static', filename='assets/scarymovie.webp') }}" alt="LUMA Logo" class="logo-img"></img>
+                    </div>
+                </div>
+                <div class="card" style="--index: 9;--color-card: 0,0,0;">
+                    <div class="img">
+                        <img src="{{ url_for('static', filename='assets/ice age.jpg') }}" alt="LUMA Logo" class="logo-img"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section class="small-description">
+    <h2>Step Into the Spotlight with LUMA</h2>
+    <p>
+        Discover the latest blockbusters, reserve your ticket in seconds,
+        and enjoy a seamless, secure booking experience. 
+        With LUMA, every movie night begins effortlessly — and ends memorably.
+    </p>
+</section>
+
+<section id="ticket" class="ticket-info">
+    <h2>Ticket Information</h2>
+    <div class="tickets-wrapper">
+        <div class="ticket-container standard-ticket">
+            <h3>Standard Ticket</h3>
+            <p class="price">₱350.00 per person</p>
+            <ul>
+                <li>Full-scale movie</li>
+                <li>Care-free service</li>
+            </ul>
+        </div>
+
+        <div class="ticket-container premium-ticket">
+            <h3>Premium Ticket</h3>
+            <p class="price">₱500.00 per person</p>
+            <ul>
+                <li>Regular features</li>
+                <li>Free popcorn</li>
+                <li>Massage chair</li>
+                <li>Free drinks</li>
+                <li>Virtual reality</li>
+            </ul>
+        </div>
+    </div>
+</section>
+    
 
 <footer id="contact">
   <div class="footer-content">

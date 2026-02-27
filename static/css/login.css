@@ -12,7 +12,6 @@ body {
   position: relative;
 }
 
-<<<<<<< HEAD
 .bg {
   position: absolute;
   inset: 0;
@@ -25,8 +24,8 @@ body {
 
 .bg1 { background-image: url("../assets/seat1.jpg"); animation-delay: 0s; }
 .bg2 { background-image: url("../assets/seat2.png"); animation-delay: 5s; }
-.bg3 { background-image: url("../assets/seat3.png"); animation-delay: 10s; }
-.bg4 { background-image: url("../assets/seat4.jpg"); animation-delay: 15s; }
+.bg3 { background-image: url("../assets/seat3.jpg"); animation-delay: 10s; }
+.bg4 { background-image: url("../assets/seat6.jpg"); animation-delay: 15s; }
 .bg5 { background-image: url("../assets/seat5.jpg"); animation-delay: 20s; }
 
 @keyframes crossfade {
@@ -35,7 +34,8 @@ body {
   20%  { opacity: 1; }
   24%  { opacity: 0; }
   100% { opacity: 0; }
-=======
+}
+
 body::after {
     content: "";
     position: absolute;
@@ -43,7 +43,6 @@ body::after {
     background: url("../assets/hahaha.jpg") no-repeat center center/cover;
     opacity: 0.7;
     z-index: -1;
->>>>>>> 27f61ce4c28ebc44e1ee980034c77944b3e14b94
 }
 
 nav {
@@ -51,13 +50,13 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px;
+    padding-top: 5px;
     display: flex;
     justify-content: space-between;
 }
 
 .logo-img {
-    width: 150px;
+    width: 13rem;
 }
 
 body::before {
@@ -67,6 +66,19 @@ body::before {
     height: 100%;
     background: rgba(0,0,0,0.6);
     z-index: 0;
+}
+
+.register-container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.10) ;
+    width: 350px;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .login-container {
@@ -124,20 +136,34 @@ body::before {
 }
 
 .btn {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
+    padding: 12px 24px;
     border: none;
-    background: #11803a;
     color: white;
-    font-weight: bold;
     cursor: pointer;
-    margin-bottom: 10px;
-    transition: all 0.3s;
+    border-radius: 8px;
+    font-weight: bold;
+    width: 18rem;
+
+    background: linear-gradient(
+        45deg,
+        rgb(16, 53, 15),
+        rgba(44, 95, 10, 0.742),
+        rgb(73, 147, 8),
+        rgb(72, 205, 10)
+    );
+
+    background-size: 300% 300%;
+    background-position: left center;
+
+    transition: background-position 0.6s ease-in-out,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
 }
 
 .btn:hover {
-    background: #333;
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
 .create-account {
@@ -161,7 +187,7 @@ body::before {
     margin-top: 5px;
 }
 
-.social-login {
+.social-login, .social-register {
     justify-content: center;
     display: flex;
     flex-direction: row;
@@ -169,24 +195,36 @@ body::before {
     gap: 10px;
 }
 
-.social-login img {
+.social-login img, .social-register img {
     width: 4rem;
 }
 
-.social-login .img1{
+.social-login .img1, .social-register .img1{
     width: 3.4rem;
 }
 
-.social-login .img2 {
+.social-login .img2, .social-register .img2{
     width: 3rem;
 }
 
-.social-login .img3 {
+.social-login .img3, .social-register .img3 {
     width: 3rem;
 }
 
-.social-login .img4 {
+.social-login .img4, .social-register .img4 {
     width: 3rem;
 }
 
+.hidden {
+    display: none;
+}
+
+.name{
+    padding-top: 1rem;
+}
+
+.name input[type="text"] {
+    width: 8.9rem;
+    gap: 10px;
+}
 
