@@ -36,20 +36,18 @@
                 <input type="password" name="password" placeholder="Password">
             </div>
 
-            <button class="btn">REGISTER</button>
+            <button type="submit" class="btn">REGISTER</button>
 
             <div class="create-account">
                 Already have an account?<br>
                 <button type="button" class="create-btn" id="showLogin">
-                    Back to Login
+                    Login
                 </button>
             </div>
 
             <div class="social-register">
                 <img class="img1" src="{{ url_for('static', filename='assets/google-removebg-preview.png') }}">
-                <img class="img2" src="{{ url_for('static', filename='assets/fb-removebg-preview.png') }}">
-                <img class="img3" src="{{ url_for('static', filename='assets/mail-removebg-preview.png') }}">
-                <img class="img4" src="{{ url_for('static', filename='assets/insta-removebg-preview.png') }}">
+                <strong>Continue with Google</strong>
             </div>
             </form>
         </div>
@@ -58,10 +56,6 @@
             <form action="/login" method="post">
                 
                 <h2>WELCOME BACK</h2>
-
-                <div class="input-box">
-                    <input type="text" name="username" placeholder="Name">
-                </div>
 
                 <div class="input-box">
                     <input type="email" name="email" placeholder="Email">
@@ -73,7 +67,7 @@
 
                 <div class="forgot">Forgot Password?</div>
 
-                <button class="btn">LOG IN</button>
+                <button type="submit" class="btn">LOG IN</button>
 
                 <div class="create-account">
                     Don't have an account?<br>
@@ -84,9 +78,7 @@
 
                 <div class="social-login">
                     <img class="img1" src="{{ url_for('static', filename='assets/google-removebg-preview.png') }}">
-                    <img class="img2" src="{{ url_for('static', filename='assets/fb-removebg-preview.png') }}">
-                    <img class="img3" src="{{ url_for('static', filename='assets/mail-removebg-preview.png') }}">
-                    <img class="img4" src="{{ url_for('static', filename='assets/insta-removebg-preview.png') }}">
+                    <strong>Continue with Google</strong>
                 </div>
             </form>
         </div>

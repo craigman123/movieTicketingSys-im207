@@ -393,8 +393,8 @@ h2 {
 
 /* // 3D Gallery */
 .wrapper {
-    width: 100rem;
-    height: 60rem;
+    width: 80rem;
+    height: 40rem;
     margin-bottom: 20rem;
     position: relative;
     text-align: center;
@@ -404,8 +404,8 @@ h2 {
 }
 
 .inner {
-    --w: 290px;
-    --h: 340px;
+    --w: 15.125rem;
+    --h: 18.25rem;
     --translateZ: calc((var(--w) + var(--h)) + 0px);
     --rotateX: -15deg;
     --perspective: 1000px;

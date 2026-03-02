@@ -1,55 +1,141 @@
 {% extends "base.html" %}
 
 {% block head %}
-    <title>LUMA Admin_Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='admin_dashboard.css') }}">
+    <title>LUMA Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
     <script src="{{ url_for('static', filename='js/admin_dashboard.js') }}"></script>
 {% endblock %}
 
 {% block body %}
 
 <div class="container">
+    <aside class="sidebar" id="sidebar">
+        <nav class="nav">
+            <header class="head">
+                <div class="image">
+                    <img src="{{ url_for('static', filename='assets/logo-removebg-preview.png') }}" class="logo" alt="Luma"></img>
+                    <h2>WELCOME ADMIN,<br> {{ user.username}} </h2>
+                </div>
+            </header>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <h2>WELCOME<br>ADMIN, NAME!</h2>
-
-        <button class="menu-btn active">ADD EVENT</button>
-        <button class="menu-btn">USERS</button>
-        <button class="menu-btn">SALES</button>
-        <button class="menu-btn">STATISTICS</button>
-        <button class="menu-btn">EVENTS</button>
-        <button class="menu-btn">LOGS</button>
+            <div class="menu-container">
+                <div class="button-container">
+                    <ul class="menu">
+                        <li class="menu-btn">
+                            <svg  xmlns="http://www.w3.org/2000/svg" width="48" height="48"  
+                                fill="#ffffff" viewBox="2 2 20 20" >
+                                <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                <path d="M18 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4.33L22 17V7l-4 3.33zm-2 12H4V6h12z"></path><path d="M11 8H9v3H6v2h3v3h2v-3h3v-2h-3z"></path>
+                            </svg>
+                            <span>ADD MOVIES</span>
+                        </li>
+                        <li class="menu-btn">
+                            <svg  xmlns="http://www.w3.org/2000/svg" width="48" height="48"  
+                                fill="#ffffff" viewBox="2 2 20 20" >
+                                <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                <path d="M8.5 10.5c0 2 1.5 3.5 3.5 3.5s3.5-1.5 3.5-3.5S14 7 12 7s-3.5 1.5-3.5 3.5m5 0c0 .88-.62 1.5-1.5 1.5s-1.5-.62-1.5-1.5S11.12 9 12 9s1.5.62 1.5 1.5"></path><path d="m20.53 7.15-8-5c-.32-.2-.74-.2-1.06 0l-8 5c-.29.18-.47.5-.47.85v8c0 .34.18.67.47.85l8 5a1.01 1.01 0 0 0 1.06 0l8-5c.29-.18.47-.5.47-.85V8c0-.34-.18-.67-.47-.85M12 19.82l-3.1-1.94c.55-.56 1.29-.88 2.1-.88h2c.8 0 1.55.32 2.1.88zm7-4.38-2.19 1.37A4.97 4.97 0 0 0 13 15h-2c-1.48 0-2.87.68-3.81 1.81L5 15.44V8.55l7-4.38 7 4.38z"></path>
+                            </svg>
+                            <span>USERS</span>    
+                        </li>
+                        <li class="menu-btn">
+                            <svg  xmlns="http://www.w3.org/2000/svg" width="48" height="48"  
+                                fill="#ffffff" viewBox="2 2 20 20" >
+                                <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8"></path><path d="M12 11c-2 0-2-.63-2-1 0-.48.7-1 2-1 1.18 0 1.39.64 1.4 1.02l1-.02h1c0-1.03-.67-2.47-2.4-2.88V6h-2v1.09C9.03 7.42 8 8.72 8 10c0 1.12.52 3 4 3 2 0 2 .68 2 1 0 .42-.62 1-2 1-1.84 0-1.99-.86-2-1H8c0 .92.66 2.55 3 2.92V18h2v-1.09c1.97-.33 3-1.63 3-2.91 0-1.12-.52-3-4-3"></path>
+                            </svg>
+                            <span>SALES</span>
+                        </li>
+                        <li class="menu-btn">
+                            <svg  xmlns="http://www.w3.org/2000/svg" width="48" height="48"  
+                                fill="#ffffff" viewBox="2 2 20 20" >
+                                <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                <path d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2M9.54 9 6.87 5h2.6l2.67 4zm5 0-2.67-4h2.6l2.67 4zM4 5h.46l2.67 4H4zm0 14v-8h16V9h-.46l-2.67-4H20v14z"></path><path d="m10 18 5-3-5-3z"></path>
+                            </svg>
+                            <span>MOVIES</span>
+                            </li>
+                        <li class="menu-btn">
+                            <svg  xmlns="http://www.w3.org/2000/svg" width="48" height="48"  
+                                fill="#ffffff" viewBox="2 2 20 20" >
+                                <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                <path d="M4 11h16v2H4zm0-5h16v2H4zm0 10h16v2H4z"></path>
+                            </svg>
+                            <span>LOGS</span>
+                        </li>
+                        <li class="menu-btn">
+                            <svg  xmlns="http://www.w3.org/2000/svg" width="48" height="48"  
+                                fill="#ffffff" viewBox="2 2 20 20" >
+                                <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                <path d="M8.5 12a1.5 1.5 0 1 0 0 3 1.5 1.5 0 1 0 0-3m7 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 1 0 0-3"></path><path d="M12 22c5.51 0 10-4.49 10-10S17.51 2 12 2 2 6.49 2 12s4.49 10 10 10m7.7-12.13a7.06 7.06 0 0 1-4.83-3.51c.15-.28.3-.56.42-.85.09-.22.17-.44.24-.67 2.02 1 3.55 2.82 4.17 5.03M12 4c.57 0 1.12.06 1.65.17-.06.19-.13.37-.2.55-.15.35-.33.68-.53 1l-.04.06c-.31.48-.67.91-1.07 1.29-.05.05-.11.1-.16.14-.14.13-.29.25-.45.37-.07.05-.13.1-.2.15-.18.12-.36.24-.55.35-.04.02-.08.05-.11.07-.22.12-.45.23-.69.32-.08.03-.17.06-.25.09-.17.06-.34.12-.52.17-.09.02-.17.05-.26.07-.19.04-.38.08-.57.11-.08.01-.16.03-.24.04a6.8 6.8 0 0 1-3.05-.33C6.04 5.89 8.8 4 12 4m-7.86 6.52c.92.31 1.87.48 2.86.48.31 0 .62-.02.93-.05.11-.01.23-.04.34-.05.18-.03.37-.05.55-.08h.03c.12-.03.25-.06.37-.1.17-.04.33-.08.5-.13s.33-.12.49-.18c.1-.04.21-.07.31-.11.01 0 .02-.01.04-.02.16-.07.32-.15.48-.23.11-.05.21-.1.32-.16.15-.08.29-.17.44-.26.08-.05.17-.1.26-.16.03-.02.05-.04.07-.05.12-.08.24-.18.36-.27s.25-.19.37-.29l.28-.25c.09-.08.18-.15.26-.24.05-.05.1-.11.14-.16.03-.03.06-.06.09-.08a9.07 9.07 0 0 0 6.4 3.82v.06c0 4.41-3.59 8-8 8s-8-3.59-8-8c0-.5.05-1 .14-1.48Z"></path>
+                            </svg>
+                            <span>ACCOUNT</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+            <div class="at">
+                <svg  xmlns="http://www.w3.org/2000/svg" width="10" height="10" font-weight="100";  
+                    fill="#ffffff" viewBox="2 2 20 20" >
+                    <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                    <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10c1.47 0 2.96-.37 4.44-1.1l-.89-1.79c-1.2.59-2.4.9-3.56.9-4.41 0-8-3.59-8-8S7.59 4 12 4s8 3.59 8 8v1c0 .69-.31 2-1.5 2-1.4 0-1.49-1.82-1.5-2V8h-2v.03C14.16 7.4 13.13 7 12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5c1.45 0 2.75-.63 3.66-1.62.52.89 1.41 1.62 2.84 1.62 2.27 0 3.5-2.06 3.5-4v-1c0-5.51-4.49-10-10-10m0 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3"></path>
+                </svg>
+                <span>2026. All Rights Reserved LUMA</span> 
+            </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-
-        <div class="top-section">
-
-            <!-- LEFT UPLOAD SECTION -->
-            <div class="upload-section">
-
-                <div class="upload-card">
-                    <div class="image-placeholder">MOVIE IMAGE</div>
+<form action="/admin_dashboard" method="POST" enctype="multipart/form-data">
+    <main class="main-content hidden">
+        <div class="main-sub-container">
+            <div class="image-container">
+                <div class="borderposter" id="borderposter">
+                    <div class="file-container"> 
+                        <div class="file-header"> 
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> 
+                            <path d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg> <p>UPLOAD MOVIE POSTER</p>
+                        </div> 
+                        <label for="fileposter" class="file-footer"> 
+                            <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M15.331 6H8.5v20h15V14.154h-8.169z"></path><path d="M18.153 6h-.009v5.342H23.5v-.002z"></path></g></svg> 
+                            <p>Select file</p> 
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z" stroke="#000000" stroke-width="2"></path> <path d="M19.5 5H4.5" stroke="#000000" stroke-width="2" stroke-linecap="round"></path> <path d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z" stroke="#000000" stroke-width="2"></path> </g></svg>
+                        </label> 
+                        <input id="fileposter" type="file" accept="image/*"> 
+                    </div>
                 </div>
-
-                <div class="upload-card">
-                    <div class="image-placeholder">TRAILER VIDEO</div>
+                <div class="bordertrial" id="bordertrial">
+                    <div class="file-container"> 
+                        <div class="file-header"> 
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> 
+                            <path d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg> <p>UPLOAD TRAILER</p>
+                        </div> 
+                        <label for="filetrailer" class="file-footer"> 
+                            <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M15.331 6H8.5v20h15V14.154h-8.169z"></path><path d="M18.153 6h-.009v5.342H23.5v-.002z"></path></g></svg> 
+                            <p>Select file</p> 
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z" stroke="#000000" stroke-width="2"></path> <path d="M19.5 5H4.5" stroke="#000000" stroke-width="2" stroke-linecap="round"></path> <path d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z" stroke="#000000" stroke-width="2"></path> </g></svg>
+                        </label> 
+                        <input id="filetrailer" type="file" accept="image/*"> 
+                    </div>
                 </div>
-
             </div>
 
-            <!-- RIGHT DETAILS SECTION -->
             <div class="details-section">
-
-                <div class="movie-info">
-                    <p>GENRE:</p>
-                    <p>DURATION:</p>
-                    <p>AGE RATING:</p>
-                    <p>LANGUAGE & SUBTITLES:</p>
-                    <p>MOVIE SCHEDULE:</p>
-                    <p>VENUE:</p>
+                <div class="info-border">
+                    <div class="movie-info">
+                        <div>
+                            <input placeholder="Genre" class="input" name="text" type="text">
+                        </div>
+                        <div>
+                            <input placeholder="Duration" class="input" name="text" type="text">
+                        </div>
+                        <div>
+                            <input placeholder="Age Rating" class="input" name="text" type="text">
+                        </div>
+                        <div>   
+                            <input placeholder="Schedule" class="date" name="text" type="date">
+                        </div>
+                        <div>
+                            <input placeholder="Venue" class="input" name="text" type="text">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="availability">
@@ -57,26 +143,22 @@
                     <button class="regular">REGULAR</button>
                     <button class="premium">PREMIUM</button>
                 </div>
-
             </div>
-        </div>
 
-        <!-- MOVIE NAME & DATE -->
-        <div class="mid-section">
-            <input type="text" placeholder="MOVIE NAME">
-            <input type="date">
-        </div>
+            <!-- <div class="mid-section">
+                <input type="text" placeholder="MOVIE NAME">
+                <input type="date">
+            </div>
 
-        <!-- DESCRIPTION -->
-        <textarea placeholder="MOVIE DESCRIPTION..."></textarea>
+            <textarea placeholder="MOVIE DESCRIPTION..."></textarea>
 
-        <!-- BOTTOM NAV -->
-        <div class="bottom-nav">
-            <button>&lt;</button>
-            <button>&gt;</button>
-        </div>
-
-    </main>
+            <div class="bottom-nav">
+                <button>&lt;</button>
+                <button>&gt;</button>
+            </div>  -->
+            </div>
+        </main>
+    </form>
 </div>
 
 {% endblock %}

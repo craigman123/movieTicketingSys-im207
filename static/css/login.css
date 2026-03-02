@@ -188,31 +188,30 @@ body::before {
 }
 
 .social-login, .social-register {
-    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    padding-left: 30px;
     display: flex;
     flex-direction: row;
     margin-top: 15px;
     gap: 10px;
+    background: whitesmoke;
+    border: 2px solid gray;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.social-login:hover, .social-register:hover {
+    background: gray;
+    transform: scale(1.02);
 }
 
 .social-login img, .social-register img {
-    width: 4rem;
+    width: 2.6rem;
 }
 
 .social-login .img1, .social-register .img1{
-    width: 3.4rem;
-}
-
-.social-login .img2, .social-register .img2{
-    width: 3rem;
-}
-
-.social-login .img3, .social-register .img3 {
-    width: 3rem;
-}
-
-.social-login .img4, .social-register .img4 {
-    width: 3rem;
+    width: 2rem;
 }
 
 .hidden {
