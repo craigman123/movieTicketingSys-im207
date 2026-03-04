@@ -13,7 +13,6 @@
         <a href="#">ORDER</a>
         <a href="about">ABOUT</a>
         <a href="#">LIBRARIES</a>
-        
         <a href="#">MOST RATED</a>
         <a href="#">MOST WATCHED</a>
         <a href="settings">SETTINGS</a>
@@ -30,22 +29,19 @@
     <h2 class="section-title">MOST WATCHED</h2>
 
     <div class="movie-grid">
-    {% for movie in movies %}
-    <div class="movie-card">
-        <img src="{{ url_for('static', filename='uploads/' + movie.movie_image.split('/')[-1]) }}" class="poster">
-        
-        <div class="movie-info">
-            <div class="rating">
-                <span class="star">★</span> {{ movie.rating }}
+        {% for movie in movies %}
+        <div class="movie-card">
+            <img src="{{ url_for('static', filename='uploads/' + movie.movie_image.split('/')[-1]) }}" class="poster">
+            
+            <div class="movie-info">
+                <h3>{{ movie.movie_name }}</h3>
+                <p class="description">{{ movie.description }}</p>
             </div>
-            <h3>{{ movie.movie_name }}</h3>
-            <p class="description">{{ movie.description }}</p>
-        </div>
 
-        <button type="button" class="details-btn">SEE MORE</button>
+            <button type="button" class="details-btn">SEE MORE</button>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 </main>
 
 <script src="{{ url_for('static', filename='js/user_dashboard.js') }}"></script>

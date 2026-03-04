@@ -154,28 +154,29 @@ def add_movie():
         venue_link = request.form.get('venue_link')
         description = request.form.get('description')
 
-        # --- Save Files ---
-        poster_path = trailer_path = venue_image_path = None
+        # --- Save Files: only store filename in DB ---
+        poster_filename = trailer_filename = venue_filename = None
 
         if allowed_file(poster_file.filename, ALLOWED_IMAGE_EXTENSIONS):
-            poster_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(poster_file.filename))
-            poster_file.save(poster_path)
+            poster_filename = secure_filename(poster_file.filename)
+            poster_file.save(os.path.join(app.config['UPLOAD_FOLDER'], poster_filename))
 
         if allowed_file(trailer_file.filename, ALLOWED_VIDEO_EXTENSIONS):
-            trailer_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(trailer_file.filename))
-            trailer_file.save(trailer_path)
+            trailer_filename = secure_filename(trailer_file.filename)
+            trailer_file.save(os.path.join(app.config['UPLOAD_FOLDER'], trailer_filename))
 
         if allowed_file(venue_image_file.filename, ALLOWED_IMAGE_EXTENSIONS):
-            venue_image_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(venue_image_file.filename))
-            venue_image_file.save(venue_image_path)
+            venue_filename = secure_filename(venue_image_file.filename)
+            venue_image_file.save(os.path.join(app.config['UPLOAD_FOLDER'], venue_filename))
 
         genre_string = ", ".join(genres)
 
+        # --- Save Movie ---
         new_movie = Movies(
             movie_name=movie_name,
             description=description,
-            movie_image=poster_path,
-            movie_trailer=trailer_path,
+            movie_image=poster_filename,        # <-- just filename
+            movie_trailer=trailer_filename,     # <-- just filename
             movie_date=release_date,
             status="Showing",
             language=language,
@@ -184,28 +185,26 @@ def add_movie():
             movie_schedule=venue_availability,
             scheduled_date=venue_date
         )
-
         db.session.add(new_movie)
         db.session.commit()
 
+        # --- Save Venue ---
         new_venue = Venue(
             movie_id=new_movie.id,
             venue_name=venue_name,
             venue_room=room,
-            venue_image=venue_image_path,
+            venue_image=venue_filename,         # <-- just filename
             schedule_open=venue_availability,
             venue_linkMap=venue_link
-            
         )
-
         db.session.add(new_venue)
 
+        # --- Save Tickets ---
         new_tickets = Tickets(
             movie_id=new_movie.id,
             standard_tickets=regular_count,
             premium_tickets=premium_count
         )
-
         db.session.add(new_tickets)
 
         db.session.commit()
@@ -235,7 +234,6 @@ def user_dashboard():
         return redirect(url_for('admin_dashboard'))
     
     user = User.query.get(session['user_id'])
-    # Fetch movies or whatever is needed
     movies = Movies.query.all()
     return render_template('user_dashboard.html', user=user, movies=movies)
 
@@ -295,13 +293,13 @@ def register():
     
     if existing_user:
         flash("Email already exists. Please choose a different one.", "danger")
-        return redirect(url_for('gotologin'))
+        return render_template('login.html')
 
     new_user = User(username=username, email=email, access='active')
     new_user.set_password(password)
     db.session.add(new_user)
     db.session.commit()
-    # Log the user in after registration
+
     session['user_id'] = new_user.id
     session['email'] = new_user.email
     session['role'] = new_user.role
