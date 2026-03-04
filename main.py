@@ -38,6 +38,7 @@ class Venue(db.Model):
     schedule_open = db.Column(db.String(1000), nullable=False) #/checked
     venue_linkMap = db.Column(db.String(1000), nullable=False) #/checked
     venue_room = db.Column(db.String(100), nullable=False) #/checked
+    venue_cap = db.Column(db.Integer, nullable=False)
     
 class Libraries(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -153,6 +154,7 @@ def add_movie():
         venue_date = request.form.get('venue_date')
         venue_link = request.form.get('venue_link')
         description = request.form.get('description')
+        venue_cap = request.form.get('cap')
 
         # --- Save Files: only store filename in DB ---
         poster_filename = trailer_filename = venue_filename = None
@@ -195,7 +197,8 @@ def add_movie():
             venue_room=room,
             venue_image=venue_filename,         # <-- just filename
             schedule_open=venue_availability,
-            venue_linkMap=venue_link
+            venue_linkMap=venue_link,
+            venue_cap=venue_cap
         )
         db.session.add(new_venue)
 
@@ -211,6 +214,19 @@ def add_movie():
 
     flash("Movie uploaded successfully!", "success")
     return redirect(url_for('admin_dashboard'))
+
+@app.route('/view_movie/<int:movie_id>')
+def view_movie(movie_id):
+    if 'user_id' not in session:
+        flash("Please log in first", "danger")
+        return redirect(url_for('gotologin'))
+
+    movie = Movies.query.get_or_404(movie_id)
+
+    venue = Venue.query.filter_by(movie_id=movie.id).first()
+    tickets = Tickets.query.filter_by(movie_id=movie.id).first()
+
+    return render_template('view_movie.html', movie=movie, venue=venue, tickets=tickets)
 
 @app.route('/admin_dashboard')
 def admin_dashboard():

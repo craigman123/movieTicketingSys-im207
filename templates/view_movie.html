@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_movie.css') }}">
+    <title>{{ movie.movie_name }} - LUMA</title>
+{% endblock %}
+
+{% block body %}
+<header class="navbar">
+    <div class="logo">LUMA</div>
+    <nav class="nav-links">
+        <a href="{{ url_for('user_dashboard') }}">HOME</a>
+        <a href="#">ORDER</a>
+        <a href="about">ABOUT</a>
+        <a href="#">LIBRARIES</a>
+        <a href="settings">SETTINGS</a>
+    </nav>
+    <div class="profile">L</div>
+</header>
+
+<main class="container view-movie">
+    <h1 class="movie-title">{{ movie.movie_name }}</h1>
+
+    {% if movie.movie_image %}
+        <img src="{{ url_for('static', filename='uploads/' + movie.movie_image) }}" class="poster" alt="{{ movie.movie_name }}">
+    {% endif %}
+
+    <div class="movie-details">
+        <p><strong>Description:</strong> {{ movie.description }}</p>
+        <p><strong>Genre:</strong> {{ movie.genre }}</p>
+        <p><strong>Language:</strong> {{ movie.language }}</p>
+        <p><strong>Duration:</strong> {{ movie.duration }}</p>
+        <p><strong>Release Date:</strong> {{ movie.movie_date }}</p>
+    </div>
+
+    {% if venue %}
+        <h2>Venue</h2>
+        <p><strong>Name:</strong> {{ venue.venue_name }}</p>
+        <p><strong>Room:</strong> {{ venue.venue_room }}</p>
+        {% if venue.venue_image %}
+            <img src="{{ url_for('static', filename='uploads/' + venue.venue_image) }}" class="venue-image" alt="{{ venue.venue_name }}">
+        {% endif %}
+        <p><a href="{{ venue.venue_linkMap }}" target="_blank">View Map</a></p>
+        <p><strong>Schedule:</strong> {{ venue.schedule_open }}</p>
+    {% endif %}
+
+    {% if tickets %}
+        <h2>Tickets</h2>
+        <p><strong>Standard:</strong> {{ tickets.standard_tickets }}</p>
+        <p><strong>Premium:</strong> {{ tickets.premium_tickets }}</p>
+    {% endif %}
+
+    {% if movie.movie_trailer %}
+        <h2>Trailer</h2>
+        <video controls autoplay muted loop style="width:100%; max-width:720px;">
+            <source src="{{ url_for('static', filename='uploads/' + movie.movie_trailer) }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% endif %}
+</main>
+
+{% endblock %}

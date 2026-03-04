@@ -29,14 +29,15 @@
     <div class="movie-grid">
         {% for movie in movies %}
         <div class="movie-card">
-            <img src="{{ url_for('static', filename='uploads/' + movie.movie_image.split('/')[-1]) }}" class="poster">
+            <img src="{{ url_for('static', filename='uploads/' + movie.movie_image) }}" class="poster">
             
             <div class="movie-info">
                 <h3>{{ movie.movie_name }}</h3>
                 <p class="description">{{ movie.description }}</p>
             </div>
 
-            <button type="button" class="details-btn">SEE MORE</button>
+            <!-- Link to view_movie page -->
+            <a href="{{ url_for('view_movie', movie_id=movie.id) }}" class="details-btn">SEE MORE</a>
         </div>
         {% endfor %}
     </div>
