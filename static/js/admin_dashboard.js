@@ -97,84 +97,6 @@ function BorderVenue(border){
     ImageSize(border);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const availBorder = document.querySelector(".avail-border");
-    const greenBackground = "linear-gradient(120deg, rgba(98, 255, 0, 0.521), rgba(57, 67, 55, 0.2))";
-    const MAX_VALUE = 999999;
-
-    const ticketTypes = document.querySelectorAll(".ticket-type:not(.infinite):not(.add10):not(.add100):not(.add1000)");
-
-    function updateAvailabilityColor() {
-        let active = false;
-        ticketTypes.forEach(ticket => {
-            const checkbox = ticket.querySelector(".ticket-checkbox");
-            const value = parseInt(ticket.querySelector(".value")?.textContent) || 0;
-            if (checkbox?.checked && value > 0) active = true;
-        });
-        availBorder.style.background = active ? greenBackground : "";
-    }
-
-    // Small + / - buttons
-    ticketTypes.forEach(ticket => {
-        const valueSpan = ticket.querySelector(".value");
-        const hiddenInput = ticket.querySelector("input[type='hidden']");
-        const plus = ticket.querySelector(".plus");
-        const minus = ticket.querySelector(".minus");
-
-        plus.addEventListener("click", () => {
-            let val = parseInt(valueSpan.textContent) || 0;
-            val = Math.min(val + 1, MAX_VALUE);
-            valueSpan.textContent = val;
-            hiddenInput.value = val;
-            updateAvailabilityColor();
-        });
-
-        minus.addEventListener("click", () => {
-            let val = parseInt(valueSpan.textContent) || 0;
-            val = Math.max(val - 1, 0);
-            valueSpan.textContent = val;
-            hiddenInput.value = val;
-            updateAvailabilityColor();
-        });
-    });
-
-    // Big increment/decrement buttons
-    const bigButtons = document.querySelectorAll(".ticket-type-container .ticket-type");
-    bigButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            let label = button.textContent.trim();
-            if (button.querySelector("label")) {
-                label = button.querySelector("label").textContent.trim();
-            }
-
-            let increment = 0;
-            if (label.includes("+") && label.includes("∞")) increment = MAX_VALUE;
-            else if (label.includes("-") && label.includes("∞")) increment = -MAX_VALUE;
-            else if (label.includes("1000")) increment = label.includes("-") ? -1000 : 1000;
-            else if (label.includes("100")) increment = label.includes("-") ? -100 : 100;
-            else if (label.includes("10")) increment = label.includes("-") ? -10 : 10;
-
-            ticketTypes.forEach(ticket => {
-                const checkbox = ticket.querySelector(".ticket-checkbox");
-                if (!checkbox || checkbox.checked) {
-                    const valueSpan = ticket.querySelector(".value");
-                    const hiddenInput = ticket.querySelector("input[type='hidden']");
-                    let current = parseInt(valueSpan.textContent) || 0;
-                    current = Math.min(Math.max(current + increment, 0), MAX_VALUE);
-                    valueSpan.textContent = current;
-                    hiddenInput.value = current;
-                }
-            });
-
-            updateAvailabilityColor();
-        });
-    });
-
-    document.querySelectorAll(".ticket-checkbox").forEach(cb => cb.addEventListener("change", updateAvailabilityColor));
-
-    updateAvailabilityColor();
-});
-
 // ====================== CALENDAR ========================
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -424,4 +346,30 @@ document.addEventListener("DOMContentLoaded", () => {
             updateSubmitButton();
         });
     });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const statusSelect = document.getElementById("statusSelect");
+
+    function updateStatusColor() {
+        const val = statusSelect.value;
+
+        statusSelect.style.background = ""; 
+        if(val === "onscreen"){
+            statusSelect.style.background = "#2ecc71"; 
+        } else if(val === "schedule"){
+            statusSelect.style.background = "#f39c12"; 
+        } else if(val === "cancel"){
+            statusSelect.style.background = "#e74c3c"; 
+        } else if(val === "hold"){
+            statusSelect.style.background = "#3498db"; // blu
+        }
+    }
+
+    // initialize on page load
+    updateStatusColor();
+
+    // update on change
+    statusSelect.addEventListener("change", updateStatusColor);
+
 });

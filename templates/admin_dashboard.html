@@ -215,54 +215,18 @@
                         <div class="avail-border">
                             <div class="availability">
                                 <h4>AVAILABILITY</h4>
-
-                                <!-- Regular Ticket -->
-                                <div class="ticket-type regular">
-                                <label class="ticket-checkbox-container">
-                                    <input title="reg-check" class="ticket-checkbox" type="checkbox" checked>
-                                    <span class="checkbox-box-ticket"></span>
-                                    <span>REGULAR</span>
-                                </label>
-
-                                <div class="value-container">
-                                    <button type="button" class="minus">-</button>
-                                    <span class="value">0</span>
-                                    <input type="hidden" name="regular_count" id="regular-count" value="0">
-                                    <button type="button" class="plus">+</button>
-                                </div>
-                                </div>
-
-                                <!-- Premium Ticket -->
-                                <div class="ticket-type premium">
-                                <label class="ticket-checkbox-container">
-                                    <input title="premium-check" class="ticket-checkbox" type="checkbox" checked>
-                                    <span class="checkbox-box-ticket"></span>
-                                    <span>PREMIUM</span>
-                                </label>
-
-                                <div class="value-container">
-                                    <button type="button" class="minus">-</button>
-                                    <span class="value">0</span>
-                                    <input type="hidden" name="premium_count" id="premium-count" value="0">
-                                    <button type="button" class="plus">+</button>
-                                </div>
-                                </div>
-
-                                <!-- Big Increment Buttons -->
-                                <div class="ticket-type-container">
-                                <div class="ticket-type infinite"> + ∞ </div>
-                                <div class="ticket-type add10"><label>+ 10</label></div>
-                                <div class="ticket-type add100"><label>+ 100</label></div>
-                                <div class="ticket-type add1000"><label>+ 1000</label></div>
-                                </div>
-
-                                <!-- Big Decrement Buttons -->
-                                <div class="ticket-type-container">
-                                <div class="ticket-type infinite"> - ∞ </div>
-                                <div class="ticket-type add10"><label>- 10</label></div>
-                                <div class="ticket-type add100"><label>- 100</label></div>
-                                <div class="ticket-type add1000"><label>- 1000</label></div>
-                                </div>
+                                    <select title="time" name="time_avail" class="input" required>
+                                        <option value="Morning( 7:30 - 9:30 )">Morning( 7:30 - 10:00 )</option>
+                                        <option value="Noon( 10:30 - 12:30 )">Noon( 10:30 - 12:30 )</option>
+                                        <option value="Afternoon( 2:30 - 4:30 )">Afternoon( 2:30 - 4:30 )</option>
+                                        <option value="Night( 6:30 - 8:30 )">Night( 6:30 - 8:30 )</option>
+                                    </select>
+                                    <select title="status" class="status-select" id="statusSelect" class="status-select" name="movie_status" required>
+                                        <option class="input" value="onscreen" selected>On Screen</option>
+                                        <option class="input" value="schedule">On Schedule</option>
+                                        <option class="input" value="cancel">Cancelled</option>
+                                        <option class="input" value="hold">On Hold</option>
+                                    </select>
                             </div>
                         </div>
                     </div>
@@ -296,7 +260,35 @@
                     <div class="venue-info"> 
                         <h4>VENUE INFORMATION</h4>
                         <input class="input" name="venue_name" placeholder="Venue Name" type="text" required>
-                        <input class="input" name="venue_availability" placeholder="Venue Availability" type="text" required>
+                            <select title="Availability" class="input" name="venue_availability" required>
+                                    <option value="ALL">Everyday</option>
+
+                                    <option value="M">M</option>
+                                    <option value="T">T</option>
+                                    <option value="W">W</option>
+                                    <option value="TH">TH</option>
+                                    <option value="F">F</option>
+                                    <option value="S">S</option>
+                                    <option value="SU">SU</option>
+
+                                    <option value="MW">MW</option>
+                                    <option value="MWF">MWF</option>
+                                    <option value="TTH">TTH</option>
+
+                                    <option value="MTW">MTW</option>
+                                    <option value="MTWF">MTWF</option>
+                                    <option value="TWTH">TWTH</option>
+
+                                    <option value="WF">WF</option>
+                                    <option value="MT">MT</option>
+                                    <option value="MTH">MTH</option>
+
+                                    <option value="FS">FS</option>
+                                    <option value="SSU">SSU</option>
+
+                                    <option value="MTWTHF">Weekdays</option>
+                                    <option value="SSU">Weekends</option>
+                            </select>
                         <input class="input" name="room" placeholder="Room" type="text" required>
                         <input class="input" name="cap" placeholder="Capacity" type="number" required>
                     </div>
@@ -308,7 +300,7 @@
                         <div id="month-year"></div>
                         <svg id="next-year" class="btn"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" ><path d="m7.71 17.71 5.7-5.71-5.7-5.71-1.42 1.42 4.3 4.29-4.3 4.29z"></path><path d="m11.29 7.71 4.3 4.29-4.3 4.29 1.42 1.42 5.7-5.71-5.7-5.71z"></path></svg>
                         <div id="next" class="btn"><i class="fa-solid fa-arrow-right"></i></div>
-                        </div>
+                    </div>
                     <div class="weekdays">
                         <div>Sun</div>
                         <div>Mon</div>

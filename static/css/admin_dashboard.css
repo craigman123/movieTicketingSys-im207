@@ -218,8 +218,8 @@ header {
     display: grid;
     grid-template-columns: .5fr 3fr;
     grid-template-areas: 
-    "genre infoavail"
-    "genre description";
+    "genre description"
+    "genre infoavail";
     padding: 10px;
     gap: 20px;
     margin: 10px;
@@ -662,6 +662,7 @@ img {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-left: 10px;
 }
 
 .image-container,
@@ -711,9 +712,10 @@ input:hover {
     overflow-x: hidden;
     border-radius: 10px;
     width: 12.5vw;    
-    height: 90vh;  
+    height: 91.5vh;  
     background: linear-gradient(135deg, rgba(255, 0, 0, 0.404), rgba(255, 0, 0, 0.244));
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
+    margin-left: 10px;
     box-sizing: border-box;
 }
 
@@ -894,7 +896,7 @@ input:hover {
 }
 
 .avail-border {
-    width: 25vw;
+    width: 24vw;
     height: 45vh;
     border-radius: 10px;
     display: flex;
@@ -902,14 +904,13 @@ input:hover {
     align-items: center;
     justify-content: center;
     padding: 5px;
-    background: linear-gradient(120deg, rgba(128, 255, 0, 0.322), rgba(54, 65, 42, 0.2));
+    background: linear-gradient(120deg, rgba(98, 255, 0, 0.521), rgba(57, 67, 55, 0.2));
 }
 
 .availability{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     margin: 5px;
     flex: 1;
     width: 100%;
@@ -996,7 +997,7 @@ input:hover {
 }
 
 .description-border {
-  width: 46vw;
+  width: 45vw;
   height: 42vh;
   border-radius: 12px;
   position: relative; 
@@ -1049,7 +1050,7 @@ input:hover {
     gap: 15px;              
     width: 100%;             
     max-width: 100%;         
-    height: 55vh;               
+    height: auto;               
     padding: 10px;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.559), rgba(0, 0, 0, 0.274));
     overflow-x: auto;          
@@ -1120,7 +1121,7 @@ input:hover {
     width: 18vw;
     height: 41vh;
     color: rgb(0, 0, 0);
-    padding: 20px;
+    padding: 5px 20px 20px 20px;
     margin-top: 20px;
 }
 
@@ -1185,7 +1186,7 @@ input:hover {
 
 .map-border {
     width: 17vw;
-    height: 40vh;
+    height: 42vh;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -1293,4 +1294,26 @@ input:hover {
     align-items: center;
     flex-direction: column;
     width: 100%;
+}
+
+.status-select{
+    flex: 1 1 0; 
+    width: 100%;
+    padding: 0.5rem 1rem;
+    height: 5.7vh;
+    border-radius: 20px;
+    margin-top: 1.7vh;
+    border: none;
+    outline: none;
+    box-shadow: 0px 10px 20px -18px;
+    font-size: 1.2vw;
+    line-height: 1.2;
+    background-color: #129b00;
+    color: #ffffff;
+    box-sizing: border-box;  
+    transition: all 0.15s ease-in-out;
+}
+
+.status-select option{
+    color:black; 
 }

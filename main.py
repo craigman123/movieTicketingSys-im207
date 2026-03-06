@@ -23,12 +23,6 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 db = SQLAlchemy(app)
-
-class Tickets(db.Model):
-    id = db.Column(db.Integer, primary_key=True) 
-    movie_id = db.Column(db.Integer, db.ForeignKey('movies.id'), nullable=False) #/checked
-    standard_tickets = db.Column(db.Integer, nullable=False) #/checked
-    premium_tickets = db.Column(db.Integer, nullable=False) #/checked
     
 class Venue(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -61,8 +55,9 @@ class Movies(db.Model):
     genre = db.Column(db.String(50), nullable=False) #/checked
     movie_schedule = db.Column(db.String(1000), nullable=False) #/checked
     scheduled_date = db.Column(db.String(1000), nullable=False) #/checked
+    movie_status = db.Column(db.String(20), nullable=False)
+    movie_time = db.Column(db.String(30), nullable=False)
     
-    tickets = db.relationship('Tickets', backref='movie', lazy=True)
     venue = db.relationship('Venue', backref='movie', lazy=True)
 
 class User(db.Model):
@@ -146,8 +141,6 @@ def add_movie():
         language = request.form.get('language')
         release_date = request.form.get('release_date')
         genres = request.form.getlist('genres[]')
-        regular_count = int(request.form.get('regular_count', 0))
-        premium_count = int(request.form.get('premium_count', 0))
         venue_name = request.form.get('venue_name')
         venue_availability = request.form.get('venue_availability')
         room = request.form.get('room')
@@ -155,6 +148,8 @@ def add_movie():
         venue_link = request.form.get('venue_link')
         description = request.form.get('description')
         venue_cap = request.form.get('cap')
+        movie_status = request.form.get('movie_status')
+        movie_time = request.form.get('time_avail')
 
         # --- Save Files: only store filename in DB ---
         poster_filename = trailer_filename = venue_filename = None
@@ -185,7 +180,9 @@ def add_movie():
             duration=duration,
             genre=genre_string,
             movie_schedule=venue_availability,
-            scheduled_date=venue_date
+            scheduled_date=venue_date,
+            movie_status=movie_status,
+            movie_time=movie_time
         )
         db.session.add(new_movie)
         db.session.commit()
@@ -201,14 +198,6 @@ def add_movie():
             venue_cap=venue_cap
         )
         db.session.add(new_venue)
-
-        # --- Save Tickets ---
-        new_tickets = Tickets(
-            movie_id=new_movie.id,
-            standard_tickets=regular_count,
-            premium_tickets=premium_count
-        )
-        db.session.add(new_tickets)
 
         db.session.commit()
 
